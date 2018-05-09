@@ -1,0 +1,191 @@
+<html>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.css">
+     <link rel="stylesheet" type="text/html" href="style.css">
+<title> Welcome</title>
+   
+
+
+<body style="background:url(https://preview.ibb.co/jOr5fH/thumb_1920_584533.jpg); background-size:cover">
+    
+   <div class="container"  >
+  <div class="jumbotron"   style=" padding-top: 12%; background-image: url(https://preview.ibb.co/gM1ePc/maxresdefault_3.jpg); width:100%; background-size:cover" >
+   
+
+    <h1 id="welcome"  style=" font-size:50px;  position:relative; top:35px;"><b style="color:gold">Ballon'd Or </b><span style="color:white">Power Rankings 2018</span></h1> 
+  </div> 
+    
+       
+<div class="container ">
+
+  <div class="row ">
+  
+    <div class="col-md-8 ">
+      
+ 	<form class="form form-horizontal" action="postform" method="post"> 
+         <div class="form-group">
+           <div class="col-md-6">
+            <label><h5 style="font-size:23px" ><b >Select Player</b></h5></label>
+     <select id="playername" class="form-control" name="pla">
+    <option  >Cristiano Ronaldo</option>
+    <option >Lionel Messi</option>
+    <option >Mohammad Salah</option>
+    <option  >Kevin de Bruyne</option>
+    <option  >Neymar jr</option>
+     <option >Harry Kane</option>
+    <option >Luka Modric</option>
+    <option >Robert Lewandowski</option>
+    <option >Sergio Augero</option>
+    <option> David De Gea </option>
+    <option> Luis Suarez </option>                
+</select>
+           </div>
+         </div>
+         <div class="form-group">
+           <div class="col-md-6 ">
+            <label ><h5 ><b style="font-size:23px">Pick Rank</b></h5></label>
+           <select id="myselect" name="rank" class="form-control">
+    <option >One</option>
+    <option >Two</option>
+    <option >Three</option>
+    <option >Four</option>
+    <option >Five</option>
+</select>
+           </div>
+         </div>
+         <button id="addplayer" style=" margin-top:16px; background: linear-gradient(40deg,#2096ff,#05ffa3)!important;" class="btn btn-lg">Add Player</button>
+        <button id="Reset" type="reset" style=" margin-top:16px;  background: linear-gradient(40deg,#ffd86f,#fc6262)!important;"class="btn btn-lg">Reset Selection</button>
+        
+        
+         <div class="col-md-14  text-center">
+    <button id="compare" type="submit" style="margin-left:55%; background: linear-gradient(40deg,#ff6ec4,#7873f5)!important; display:none ; margin-top:40px;     border-radius: 10em;" id="compare" class="btn  btn-primary btn-lg "  >Submit and Compare</button>
+        
+        
+        
+        </div>
+        
+        </form>
+     
+    </div>
+      <!-- Players Name as rankings-->
+       <div class="container"  id="rankings" style="  height: 300px;
+    width: 300px; background-image:url(https://preview.ibb.co/gM1ePc/maxresdefault_3.jpg); ">
+          
+    <h5 id="ranks" style="text-align:center; color:white ;font-size:20px;font-weight:400; border-radius:1em;  height:30px;display: inline-block;
+  height: 25px;  " >  </h5>
+         
+           
+    </div>
+ 
+  </div>
+    
+    
+    
+    <div>
+    
+    <form id="newform" method="post" action="newform">
+       <div>
+       <select name="name">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+  </select>
+        number<input type="number" name="number">
+        <button id="addplayer" > add</button>
+        </div> 
+        </form>
+    
+    </div>
+   </div>
+ 
+</div>
+    
+ 
+    </body>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    
+        
+         $('#welcome').addClass('animated fadeIn infinite');
+         $('#compare').addClass('animated pulse infinite');
+       $("#rankings").hide();
+        
+    $(document).ready(function (){
+        
+      
+            
+          
+         
+        
+        $("#addplayer").click(function(e){
+             e.preventDefault();
+         
+              $("#rankings").show();
+           var name = $("#playername option:selected").text();
+            var rank = $("#myselect option:selected").text();
+           console.log(name);
+            
+            
+            $("#playername option:selected").detach();
+           
+            $("#myselect option:selected").detach();
+            var array= [name,rank];
+            
+          
+                
+                var x = $('#ranks');
+                x.append("<h5><br>"+ rank + "    -     " + name+"<br></h5>");
+            
+                var length=$("#ranks > h5").length;
+                
+            console.log(length);
+              
+                 
+           
+            
+            
+       
+              
+            
+             if(length==5){
+                 $("#addplayer").attr("disabled", true);
+                 
+                    $("#compare").css("display","block");
+                 $("#selectagain").attr("disabled",false);
+                  $("#selectagain").click(function(){
+                      
+                     window.location.reload(true);
+                  })
+            
+                        
+            }
+          
+        })
+       
+        $("#Reset").click(function(){
+            
+             window.location.reload(true);
+        })
+      
+            
+    });
+        
+        
+        
+            
+       
+        
+    
+    
+    
+    
+    
+    
+    </script>
